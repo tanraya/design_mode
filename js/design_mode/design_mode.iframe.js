@@ -9,22 +9,21 @@ DesignMode.Iframe = new Class({
     create: function(el) {
         // Move html from el to new div and hide
         this.article = el;
+        this.article_size  = this.article.getComputedSize();
+        this.original_html = this.article.get('html');
 
-        var text = this.article.get('html');
-        var size = this.article.getComputedSize();
-        this.article.set('html', '')
+        // Create iframe object
+        this.iframe = new Element('iframe', { id : 'dm-iframe'});
 
-        this.original = new Element('div', { styles : { display : 'none' } }).inject(this.article);
-        this.original.set('html', text);
-
-        this.iframe = new Element('iframe', {
-            id : 'dm-iframe'
-        }).inject(this.original, 'after');
+        // Resize iframe
+        this.resize(this.article_size.totalWidth, this.article_size.totalHeight + 70) // 70 is a hack!
+        this.article.set('html', '');
+        this.iframe.inject(this.article);
 
         html = '<!DOCTYPE html>'
         html += '<head><meta charset="utf-8" /><link rel="stylesheet" href="css/tanraya/default.css" />'
         html += '<link rel="stylesheet" href="css/layout_sample/content.css" /></head>'
-        html += '<html class="content"><body>' + this.original.get('html') + '</body>'
+        html += '<html class="content"><body>' + this.original_html + '</body>'
         html += '</html>'
 
         this.win = this.iframe.contentWindow;
@@ -32,9 +31,6 @@ DesignMode.Iframe = new Class({
         this.doc.open();
         this.doc.write(html);
         this.doc.close();
-
-        // Resize iframe
-        this.resize(size.totalWidth, size.totalHeight + 70) // 70 is a hack!
     },
 
     // Resize iframe
