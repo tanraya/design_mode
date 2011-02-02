@@ -1,4 +1,5 @@
 // Editor general class
+//  It's useful: http://accessgarage.wordpress.com/2009/05/08/how-to-hack-your-app-to-make-contenteditable-work/
 var DesignMode = new Class({
     Implements : [Events, Options],
 
