@@ -21,9 +21,9 @@ DesignMode.Iframe = new Class({
         this.iframe.inject(this.article);
 
         html = '<!DOCTYPE html>'
-        html += '<head><meta charset="utf-8" /><link rel="stylesheet" href="css/tanraya/default.css" />'
+        html += '<html class="content"><head><meta charset="utf-8" /><link rel="stylesheet" href="css/tanraya/default.css" />'
         html += '<link rel="stylesheet" href="css/layout_sample/content.css" /></head>'
-        html += '<html class="content"><body>' + this.original_html + '</body>'
+        html += '<body>' + this.original_html + '</body>'
         html += '</html>'
 
         this.win = this.iframe.contentWindow;

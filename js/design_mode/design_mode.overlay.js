@@ -15,7 +15,7 @@ DesignMode.Overlay = new Class({
             this.el.set('opacity', this.options.opacity);
 
             // Extend overlay object
-            $extend(this.el, {
+            Object.append(this.el, {
                 visible : this.visible.bind(this),
                 toggle  : this.toggle.bind(this),
                 show    : this.show.bind(this),
