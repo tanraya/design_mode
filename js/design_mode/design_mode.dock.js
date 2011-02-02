@@ -8,9 +8,12 @@ DesignMode.Dock = new Class({
     },
 
     // Constructor
-    initialize: function(options)  {
+    initialize: function(options) {
         this.setOptions(options);
         this.dock = $(this.options.dock);
+
+        // it's temporary
+        this.dock.setStyle('display', 'block');
 
         // Set default position
         this.dock.position({

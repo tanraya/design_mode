@@ -8,21 +8,22 @@ DesignMode.Iframe = new Class({
     // Create iframe object and inject it after el
     create: function(el) {
         // Move html from el to new div and hide
-        var text = el.get('html');
-        var size = el.getComputedSize();
-        el.set('html', '')
+        this.article = el;
 
-        var container = new Element('div', { styles : { display : 'none' } }).inject(el);
-        container.set('html', text);
-        
+        var text = this.article.get('html');
+        var size = this.article.getComputedSize();
+        this.article.set('html', '')
+
+        this.original = new Element('div', { styles : { display : 'none' } }).inject(this.article);
+        this.original.set('html', text);
 
         this.iframe = new Element('iframe', {
             id : 'dm-iframe'
-        }).inject(container, 'after');
+        }).inject(this.original, 'after');
 
         html = '<!DOCTYPE html>'
         html += '<head><meta charset="utf-8" /><link rel="stylesheet" href="css/tanraya/default.css" /><link rel="stylesheet" href="css/layout_sample/content.css" /></head>'
-        html += '<html class="content"><body>' + container.get('html') + '</body>'
+        html += '<html class="content"><body>' + this.original.get('html') + '</body>'
         html += '</html>'
 
         this.win = this.iframe.contentWindow;

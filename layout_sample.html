@@ -13,6 +13,14 @@
         <link rel="stylesheet" href="css/design_mode/overlay.css" />
         <link rel="stylesheet" href="css/design_mode/iframe.css" />
         <link rel="stylesheet" href="css/design_mode/dock.css" />
+
+        <style>
+            #toggle-designmode span+span { display: none; }
+            #toggle-designmode.enabled span { display: none; }
+            #toggle-designmode.enabled span+span { display: inline; }
+
+            #dm-dock { display: none; }
+        </style>
     </head>
 
     <body>
@@ -104,6 +112,7 @@
             </nav>
             <div id="body">
                 <div id="article-wrapper">
+                    <h4><a href="#" id="toggle-designmode"><span>Enable</span><span>Disable</span> DesignMode</a></h4>
                     <article class="content">
                         <section>
                             <h1>How about article header?</h1>
@@ -165,7 +174,6 @@
             // По-умолчанию Dock задизейблен. Все кроме дока и статьи скрыто при помощи overlay.
             // Если устанавливаем фокус в iframe, то Dock раздизейбливается
             // 
-            // Dock не должен выезжать за пределы viewport
             // Куча разные event-колбэков
             // У ифрейма есть прокрутка, поэтому я добавил к его высоте 70px
             // Методы editor.enable(), editor.disable(), editor.toggle()
@@ -185,9 +193,29 @@
             // эти настройки? Во всплывающее окно? Или в док?
 
             document.addEvent('domready', function() {
-                var editor = new DesignMode.Editor($$('#article-wrapper article')[0], {
+                var container = $$('#article-wrapper article')[0];
+                var toggle    = $('toggle-designmode');
+                var editor    = new DesignMode.Editor(container, {
 
                 });
+                
+
+                toggle.addEvent('click', function(e) {
+                    e.stop();
+
+                    if (toggle.hasClass('enabled')) {
+                        toggle.removeClass('enabled');
+                        editor.disable();
+                        
+                    } else {
+                        toggle.addClass('enabled');
+                        editor.enable();
+                    }
+                });
+
+
+
+
 
             //    var overlay = new DesignMode.Overlay;
             //    overlay.show();
