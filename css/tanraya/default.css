@@ -1,0 +1,219 @@
+/*===============================================================================================
+
+    Title   : Tanraya CSS Framework (http://torqueo.net)
+    Name    : default.css
+    Version : $Id: default.css 18 2009-11-05 05:36:07Z tanraya $
+
+    Default framework styles. You can redefine this styles in custom site
+    stylesheet, but not in this file.
+
+    All indentations of all element specified in pixels,
+    that the size of the indentation does not depend on the
+    size of the text on the page.
+
+    ATTENTION! DO NOT ADD YOUR CUSTOM STYLES IN THIS FILE!
+
+=================================================================================================
+
+    1. Reset
+    2. General Elements
+            2.1 html, body
+            2.2 Headings
+            2.3 Lists
+            2.4 Tables
+            2.5 Other elements
+            2.6 Images
+            2.7 Forms
+            2.8 Anchors
+
+===============================================================================================*/
+/* HTML2 support */
+header,
+nav,
+section,
+article,
+aside,
+hgroup,
+footer {
+    display: block;
+}
+
+/* 1. Reset ===================================================================================*/
+@charset "utf-8";
+*:focus, label { outline: none; }
+
+/* 2. General Elements ========================================================================*/
+
+/* 2.1 html, body */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+body {
+    background-color: #fff;
+    font: .75em/1.3 Arial, Helvetica, sans-serif;
+}
+
+/* 2.2 Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    margin: 0 0 10px 0;
+    padding: 0;
+    line-height: 1;
+}
+
+h1 { font-size: 2em; }   /* 100% */
+h2 { font-size: 1.7em; } /* -0.3 */
+h3 { font-size: 1.5em; } /* -0.6 */
+h4 { font-size: 1.1em; } /* -0.9 */
+h5 { font-size: 1em; }   /* -1   */
+h6 { font-size: 0.8em; } /* -1.2 */
+
+/* 2.3 Lists */
+ul, ol, dl { list-style: none; margin: 0; padding: 0; }
+
+/* 2.4 Tables */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption, th, td {
+    text-align: left;
+    font-weight: normal;
+    padding: 0;
+    vertical-align: top;
+}
+
+th { font-weight: bold; }
+
+/* 2.5 Other elements */
+strong { font-weight: bold; }
+em { font-style: italic; }
+address { font-style: normal; }
+sup, sub { vertical-align: baseline; position: relative; }
+sup { top: -0.4em; }
+sub { bottom: -0.3em; }
+p { margin: 0 0 18px 0; overflow: hidden; zoom: 1; }
+blockquote {
+    margin: 0 0 18px 30px;
+    border-left: 3px solid #ddd;
+    padding: 8px 8px 8px 16px;
+}
+
+/* Text in quotes. Not worx in IE6. */
+q { quotes: "\00ab" "\00bb" "\201e" "\201c"; }
+q:after { content: "\00bb"; }
+q:before { content: "\00ab"; }
+q > q:after { content: "\201c"; }
+q > q:before { content: "\201e"; }
+
+del { text-decoration: line-through; }
+ins {
+    font-style: italic;
+    text-decoration: none;
+}
+
+
+code, kbd, pre, samp, tt, var {
+    font: 0.9em Consolas, "Courier New", monospace;
+}
+
+code, pre { white-space: pre-wrap; }
+abbr, acronym {
+    cursor: help;
+    border-bottom: 1px dotted #999;
+}
+
+address, cite, dfn { font-style: normal; }
+object { margin: 0; }
+
+/* 2.6 Images */
+a img { border: 0 }
+img { vertical-align: bottom; }
+img.f-left { float: left; margin: 0 18px 0 0;  clear: left; } 
+img.f-right { float: right; margin: 0 0 0 18px; } 
+
+/* 2.7 Forms */
+form {
+    margin: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+form input[type=text]:focus,
+form input[type=password]:focus,
+form textarea:focus,
+form select:focus { border-color: orange; }
+
+form .form-row {
+    margin-bottom: 15px;
+}
+
+form label {
+    display: block;
+    vertical-align: middle;
+    font-weight: bold;
+    cursor: hand;
+    cursor: pointer;
+}
+
+form input { vertical-align: middle; }
+
+form .form-field, .form select {
+    font-size: 1.2em;
+}
+
+form .form-field, .form textarea {
+    padding: 2px;
+    width: 500px;
+}
+
+form textarea { height: 150px; }
+form input,
+form .form-field,
+form textarea,
+form select {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+form span.form-required {
+    color: red;
+    font-size: 250%;
+    padding: 0 0 0 0.3em;
+    vertical-align: middle;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+
+form .form-required-filled { color: green !important; }
+
+form div.form-submit {
+    text-align: center;
+    border-top: 1px solid #ddd ;
+    padding-top: 15px;
+}
+
+form input.form-submit {
+    font-size: 1.2em;
+    padding: 3px 20px;
+    _width: 0;
+    _overflow:visible;
+}
+
+/* 2.8 Anchors */
+a {}
+a:hover   {}
+a:visited {}
+a:active  {}
+
+
