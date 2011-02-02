@@ -1,5 +1,5 @@
 // Editor general class
-DesignMode.Editor = new Class({
+/*DesignMode.Editor = new Class({
     Implements : [Events, Options],
 
     // Constructor
@@ -29,9 +29,4 @@ DesignMode.Editor = new Class({
         this.dock   = null;
         this.editor = null;
     }
-//
-//    setBold: function() {
-//        this.editor.contentWindow.focus();
-//        this.editor.contentWindow.document.execCommand("bold", null, "");
-//    }
-});
+});*/
