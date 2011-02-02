@@ -18,16 +18,28 @@
         -moz-border-radius: 5px 5px 0 0;
         -webkit-border-radius: 5px 5px 0 0;
         border-radius: 5px 5px 0 0;
+        cursor: move;
+        -moz-user-select: none;
+        user-select: none;
     }
-    #dm-dock div { padding: 3px; }
-        #dm-dock fieldset { border: 1px solid #bbb; }
-            #dm-dock legend { color: #555; padding: 0 5px; }
+    #dm-dock div {
+        padding: 3px;
+        cursor: default;
+        -moz-user-select: none;
+        user-select: none;
+    }
+        #dm-dock fieldset { border: 1px solid #bbb; padding: 2px 3px 3px 3px; margin: 3px 0 0 0; }
+            #dm-dock legend {
+                color: #555;
+                padding: 0 5px;
+                font-size: 85%;
+            }
 
         #dm-dock ul { list-style: none; overflow: hidden; margin: 0; padding: 0; }
             #dm-dock li { float: left; }
                 #dm-dock button { width: 30px; height: 30px; cursor: hand; cursor: pointer; }
 
         #dm-dock-styles {}
-            #dm-dock-styles ul { overflow: auto; height: 370px; border: 1px inset #ddd; }
+            #dm-dock-styles ul { overflow: auto; height: 380px; border: 1px inset #ddd; }
                 #dm-dock-styles li { float: none; padding: 5px; cursor: hand; cursor: pointer; }
                 #dm-dock-styles li:hover { background: #ccc; }

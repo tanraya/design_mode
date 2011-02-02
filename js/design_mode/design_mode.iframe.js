@@ -22,7 +22,8 @@ DesignMode.Iframe = new Class({
         }).inject(this.original, 'after');
 
         html = '<!DOCTYPE html>'
-        html += '<head><meta charset="utf-8" /><link rel="stylesheet" href="css/tanraya/default.css" /><link rel="stylesheet" href="css/layout_sample/content.css" /></head>'
+        html += '<head><meta charset="utf-8" /><link rel="stylesheet" href="css/tanraya/default.css" />'
+        html += '<link rel="stylesheet" href="css/layout_sample/content.css" /></head>'
         html += '<html class="content"><body>' + this.original.get('html') + '</body>'
         html += '</html>'
 
