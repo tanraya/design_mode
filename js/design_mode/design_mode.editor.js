@@ -1,32 +1,17 @@
-// Editor general class
-/*DesignMode.Editor = new Class({
-    Implements : [Events, Options],
-
+// Iframe object
+DesignMode.Editor = new Class({
     // Constructor
-    initialize: function(area, options) {
-        this.setOptions(options);
-        this.area = $(area);
+    initialize: function(el) {
+        this.create(el)
     },
 
-    enable: function() {
-        // Creates iframe
-        this.editor = new DesignMode.Iframe(this.area);
-        this.editor.editable(true);
-
-        // Initialize dock
-        this.dock = new DesignMode.Dock({
-            default_pos : { x : 810, y : 170 }
-        });
+    create: function(el) {
+        // Move html from el to new div and hide
+        this.article = el;
     },
 
-    disable: function() {
-        // temporary code - I know it's ugly
-        this.editor.article.set('html', this.editor.original.get('html'));
-        this.editor.original.dispose();
-        this.editor.iframe.dispose();
-        this.dock.dock.setStyle('display', 'none');
-
-        this.dock   = null;
-        this.editor = null;
+    // Makes iframe editable
+    editable: function(status) {
+        this.article.set('contentEditable', 'true');
     }
-});*/
+});
