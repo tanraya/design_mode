@@ -2,96 +2,34 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>DesignMode!</title>
-        <script src="mootools-core-1.3.js"></script>
-        <script src="mootools-more.js"></script>
+        <title>A simple blog layout</title>
+        <script src="js/vendor/mootools-core-1.3.js"></script>
+        <script src="js/vendor/mootools-more.js"></script>
+
+        <link rel="stylesheet" href="css/tanraya/default.css" />
+        <link rel="stylesheet" href="css/layout_sample/layout.css" />
+        <link rel="stylesheet" href="css/layout_sample/content.css" />
+
+        <link rel="stylesheet" href="css/design_mode/overlay.css" />
+        <link rel="stylesheet" href="css/design_mode/iframe.css" />
+        <link rel="stylesheet" href="css/design_mode/dock.css" />
+
         <style>
-            body { font: 11px Arial; }
-            textarea { width: 800px; height: 1500px; }
+            #toggle-designmode span+span { display: none; }
+            #toggle-designmode.enabled span { display: none; }
+            #toggle-designmode.enabled span+span { display: inline; }
 
-            #tanraya-overlay {
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                background-color: #000;
-                position: fixed;
-                z-index: 910;
-                display: none;
-
-                /* For IE */
-                _position: absolute;
-
-                _top: expression(
-                            document.body.offsetTop +
-                            parseInt(document.documentElement.scrollTop, 10) + "px"
-                );
-            }
-
-            #tanraya-overlay-modal {
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                background-color: #999;
-                position: fixed;
-                z-index: 920;
-                display: none;
-
-                /* For IE */
-                _position: absolute;
-
-                _top: expression(
-                            document.body.offsetTop +
-                            parseInt(document.documentElement.scrollTop, 10) + "px"
-                );
-            }
-
-            #editable-iframe {
-                border: 1px inset #bbb;
-                -moz-border-radius: 3px;
-                -webkit-border-radius: 3px;
-                border-radius: 3px;
-            }
-
-            #editable-dock {
-                background: #ddd;
-                width: 250px;
-                height: 600px;
-                -moz-border-radius: 3px;
-                -webkit-border-radius: 3px;
-                border-radius: 3px;
-            }
-                #editable-dock h4 {
-                    margin: 0;
-                    padding: 7px;
-                    background: #ccc;
-                    -moz-border-radius: 3px 3px 0 0;
-                    -webkit-border-radius: 3px 3px 0 0;
-                    border-radius: 3px 3px 0 0;
-                }
-                #editable-dock div { padding: 3px; }
-                    #editable-dock fieldset { border: 1px solid #bbb; }
-                        #editable-dock legend { color: #555; padding: 0 5px; }
-
-                    #editable-dock ul { list-style: none; overflow: hidden; margin: 0; padding: 0; }
-                        #editable-dock li { float: left; }
-                            #editable-dock button { width: 30px; height: 30px; cursor: hand; cursor: pointer; }
-
-                    #editable-dock-styles {}
-                        #editable-dock-styles ul { overflow: auto; height: 370px; border: 1px inset #ddd; }
-                            #editable-dock-styles li { float: none; padding: 5px; cursor: hand; cursor: pointer; }
-                            #editable-dock-styles li:hover { background: #ccc; }
+            #dm-dock { display: none; }
         </style>
     </head>
 
     <body>
-        <textarea></textarea>
-        
-        <div id="editable-dock">
+
+        <!-- DESIGNMODE DOCK -->
+        <div id="dm-dock">
             <h4 title="Drag it">Dock</h4>
             <div>
-                <fieldset id="editable-dock-actions">
+                <fieldset id="dm-dock-actions">
                     <legend>Actions</legend>
                     <ul>
                         <li><button title="Undo"></button></li>
@@ -100,7 +38,7 @@
                         <li><button title="Paste from word"></button></li>
                     </ul>
                 </fieldset>
-                <fieldset id="editable-dock-actions">
+                <fieldset id="dm-dock-actions">
                     <legend>Formatting</legend>
                     <ul>
                         <li><button title="Bold"></button></li>
@@ -109,7 +47,7 @@
                         <li><button title="Clear formatting"></button></li>
                     </ul>
                 </fieldset>
-                <fieldset id="editable-dock-elements">
+                <fieldset id="dm-dock-elements">
                     <legend>Elements</legend>
                     <ul>
                         <li><button title="Ordered list"></button></li>
@@ -118,7 +56,7 @@
                         <li><button title="Image"></button></li>
                     </ul>
                 </fieldset>
-                <fieldset id="editable-dock-styles">
+                <fieldset id="dm-dock-styles">
                     <legend>Styles</legend>
                     <ul>
                         <li>Style name</li>
@@ -158,207 +96,136 @@
             </div>
         </div>
 
-<script>
-// DesignMode WYSIWYG Editor
-// http://www.mozilla.org/editor/ie2midas.html
+        <!-- /DESIGNMODE DOCK -->
 
-var TanrayaOverlay = new Class({
-    Implements : Options,
-    name       : 'overlay',
+        <div id="wrapper">
+            <header>
+                <h1><a href="/">DesignMode blog</a></h1>
+            </header>
+            <nav>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">Wiki</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+            <div id="body">
+                <div id="article-wrapper">
+                    <h4><a href="#" id="toggle-designmode"><span>Enable</span><span>Disable</span> DesignMode</a></h4>
+                    <article class="content">
+                        <section>
+                            <h1>How about article header?</h1>
 
-    options : {
-       overlayId : 'tanraya-overlay',
-       zIndex    : 8000,
-       opacity   : 0.4
-    },
+                            <p>
+                               <em>Little article intro here. At sed dolor felis ante facilisi, aliquet rutrum donec ornare, nullam et malesuada ut a ac, enim scelerisque ante sed arcu, purus varius. Rutrum ac, sed at ridiculus, et nunc ut. Id morbi, suspendisse purus wisi dolor wisi lectus porttitor, ipsum in ac, pretium ante tellus duis nec viverra orci. Nibh nibh sem metus suscipit, hac tincidunt vehicula ultricies. Nulla donec et, nulla feugiat ac eu donec, wisi sed et orci pede libero. Lorem in cursus enim odio. Sed nec posuere mollis tincidunt nibh diam, magna id sem porta cursus, mi amet mauris sit arcu. Faucibus eleifend pellentesque orci arcu ut, vel egestas nulla, lorem nunc vel praesent. Ut nulla, fusce urna tristique turpis mus.</em>
+                            </p>
 
-    initialize: function(options) {
-        this.setOptions(options);
+                            <section>
+                                <h2>Header number one</h2>
+                                <p>Lorem ipsum dolor sit amet, sapien ut. Mollis natoque <strong>praesent faucibus</strong>, mi nisl nonummy adipiscing pharetra tincidunt neque, felis at vivamus. Lectus mauris. Tempus duis at pede semper, neque eu consectetuer vestibulum, fusce hac est ipsum nullam metus, faucibus erat viverra amet arcu, euismod quos laoreet mi sit proin luctus. Ante et pulvinar velit, dui dapibus id placerat. Nisl urna lacus donec tortor sapien, rutrum est sed ultrices placerat felis, enim sit ultricies integer et, suspendisse vel nostra molestie justo, ac vestibulum aliquet vehicula eu facilisis. Dictum diam enim justo consequat, blandit et dignissim nec bibendum sed, sit pede metus eros ipsum diam.</p>
+                                <p><em>Turpis condimentum</em>, purus tellus nam ut, a felis aliquam, congue scelerisque libero aliquet. Adipiscing nec ipsum pellentesque in mauris, mi sodales ullamcorper dignissim accumsan ipsum sapien. A dignissim orci, molestie aliquet dictum massa sed in fusce, congue ultricies. <a href="/risus-hendrerit">Risus hendrerit</a> non, aliquam sed eros enim volutpat pulvinar explicabo, diam vel egestas ullamcorper sit sagittis ut. Nonummy scelerisque maecenas nulla consectetuer in eu. Fermentum vitae suscipit tellus, ut sed consectetuer, lacus in cursus. Diam vestibulum pharetra sem quisque, nibh aliquam dictum, feugiat eget non enim. Egestas eros velit sit vivamus ac. Eget dui, vitae vestibulum nisl, orci pharetra phasellus at. Torquent proin curabitur nunc consequat facilisis, sociis eget feugiat lacus, nunc elementum at aenean, porttitor sem proin, id mauris vitae eum lectus scelerisque.</p>
+                            </section>
 
-        if (!$(this.options.overlayId)) {
-            this.el = this.build();
-            this.el.set('opacity', this.options.opacity);
+                            <section>
+                                <h2>Header number two</h2>
+                                <p>Aenean nec amet, suscipit <strike>libero elit</strike> vitae lectus quis molestie, aliquam leo ligula vel justo porttitor dictum, mauris odio libero lacus, rutrum gravida. Mauris et. Lorem sunt eu class dolor ullamcorper, risus tellus blandit, etiam velit nec mattis blandit sodales vel, leo id volutpat donec. Volutpat ad aenean convallis suscipit, maecenas leo dignissim venenatis erat etiam turpis, hendrerit non, proin architecto. Arcu fermentum. Imperdiet quam suscipit lorem dictumst cras, habitasse dictum in amet sollicitudin, vitae dolor purus arcu vitae, maecenas fermentum elit enim posuere orci.</p>
+                                <p>At sed dolor felis ante facilisi, aliquet rutrum donec ornare, nullam et malesuada ut a ac, enim scelerisque ante sed arcu, purus varius. Rutrum ac, sed at ridiculus, et nunc ut. Id morbi, suspendisse purus wisi dolor wisi lectus porttitor, ipsum in ac, pretium ante tellus duis nec viverra orci. Nibh nibh sem metus suscipit, hac tincidunt vehicula ultricies. Nulla donec et, nulla feugiat ac eu donec, wisi sed et orci pede libero. Lorem in cursus enim odio. Sed nec posuere mollis tincidunt nibh diam, magna id sem porta cursus, mi amet mauris sit arcu. Faucibus eleifend pellentesque orci arcu ut, vel egestas nulla, lorem nunc vel praesent. Ut nulla, fusce urna tristique turpis mus, sit adipiscing urna odio quam, aliquet at vestibulum nulla pellentesque vestibulum pulvinar, ridiculus scelerisque sit dolor mi diam blandit. Non sapien et tincidunt mauris, rutrum dolor nullam nulla nulla, ut non massa vulputate pede maecenas posuere. Praesent porttitor ac nibh nascetur.</p>
+                            </section>
 
-            // Extend overlay object
-            $extend(this.el, {
-                visible : this.visible.bind(this),
-                toggle  : this.toggle.bind(this),
-                show    : this.show.bind(this),
-                hide    : this.hide.bind(this)
-            });
-        }
-    },
+                            <section>
+                                <h2>Header number three</h2>
+                                <p>Aenean nec amet, suscipit <strike>libero elit</strike> vitae lectus quis molestie, aliquam leo ligula vel justo porttitor dictum, mauris odio libero lacus, rutrum gravida. Mauris et. Lorem sunt eu class dolor ullamcorper, risus tellus blandit, etiam velit nec mattis blandit sodales vel, leo id volutpat donec. Volutpat ad aenean convallis suscipit, maecenas leo dignissim venenatis erat etiam turpis, hendrerit non, proin architecto. Arcu fermentum. Imperdiet quam suscipit lorem dictumst cras, habitasse dictum in amet sollicitudin, vitae dolor purus arcu vitae, maecenas fermentum elit enim posuere orci.</p>
+                                <p>At sed dolor felis ante facilisi, aliquet rutrum donec ornare, nullam et malesuada ut a ac, enim scelerisque ante sed arcu, purus varius. Rutrum ac, sed at ridiculus, et nunc ut. Id morbi, suspendisse purus wisi dolor wisi lectus porttitor, ipsum in ac, pretium ante tellus duis nec viverra orci. Nibh nibh sem metus suscipit, hac tincidunt vehicula ultricies. Nulla donec et, nulla feugiat ac eu donec, wisi sed et orci pede libero. Lorem in cursus enim odio. Sed nec posuere mollis tincidunt nibh diam, magna id sem porta cursus, mi amet mauris sit arcu. Faucibus eleifend pellentesque orci arcu ut, vel egestas nulla, lorem nunc vel praesent. Ut nulla, fusce urna tristique turpis mus, sit adipiscing urna odio quam, aliquet at vestibulum nulla pellentesque vestibulum pulvinar, ridiculus scelerisque sit dolor mi diam blandit. Non sapien et tincidunt mauris, rutrum dolor nullam nulla nulla, ut non massa vulputate pede maecenas posuere. Praesent porttitor ac nibh nascetur.</p>
+                            </section>
 
-    // Get overlay object
-    get: function() {
-        return this.el;
-    },
+                            <section>
+                                <h2>Header number four</h2>
+                                <p>Aenean nec amet, suscipit <strike>libero elit</strike> vitae lectus quis molestie, aliquam leo ligula vel justo porttitor dictum, mauris odio libero lacus, rutrum gravida. Mauris et. Lorem sunt eu class dolor ullamcorper, risus tellus blandit, etiam velit nec mattis blandit sodales vel, leo id volutpat donec. Volutpat ad aenean convallis suscipit, maecenas leo dignissim venenatis erat etiam turpis, hendrerit non, proin architecto. Arcu fermentum. Imperdiet quam suscipit lorem dictumst cras, habitasse dictum in amet sollicitudin, vitae dolor purus arcu vitae, maecenas fermentum elit enim posuere orci.</p>
+                                <p>At sed dolor felis ante facilisi, aliquet rutrum donec ornare, nullam et malesuada ut a ac, enim scelerisque ante sed arcu, purus varius. Rutrum ac, sed at ridiculus, et nunc ut. Id morbi, suspendisse purus wisi dolor wisi lectus porttitor, ipsum in ac, pretium ante tellus duis nec viverra orci. Nibh nibh sem metus suscipit, hac tincidunt vehicula ultricies. Nulla donec et, nulla feugiat ac eu donec, wisi sed et orci pede libero. Lorem in cursus enim odio. Sed nec posuere mollis tincidunt nibh diam, magna id sem porta cursus, mi amet mauris sit arcu. Faucibus eleifend pellentesque orci arcu ut, vel egestas nulla, lorem nunc vel praesent. Ut nulla, fusce urna tristique turpis mus, sit adipiscing urna odio quam, aliquet at vestibulum nulla pellentesque vestibulum pulvinar, ridiculus scelerisque sit dolor mi diam blandit. Non sapien et tincidunt mauris, rutrum dolor nullam nulla nulla, ut non massa vulputate pede maecenas posuere. Praesent porttitor ac nibh nascetur.</p>
+                            </section>
+                        </section>
+                    </article>
+                </div>
+                <aside>
+                    sidebar
+                </aside>
+            </div>
+            <footer>
+                <p>
+                    &copy; DesignMode, WYSIWYM editor. 2011.
+                </p>
+            </footer>
+        </div>
 
-    // Build overlay object
-    build: function() {
-        return new Element('div', {
-            id      : this.options.overlayId,
-            styles : {
-                'z-index' : this.options.zIndex
-            }
-        }).inject(document.body, 'top');
-    },
+        <!-- DesignMode styles -->
+        <link rel="stylesheet" href="css/design_mode/overlay.css" />
+        <link rel="stylesheet" href="css/design_mode/iframe.css" />
+        <link rel="stylesheet" href="css/design_mode/dock.css" />
 
-    // Overlay is visible
-    visible : function() {
-        return this.el.getStyle('display') == 'block';
-    },
+        <!-- DesignMode scripts -->
+        <script src="js/design_mode/design_mode.js"></script>
+        <script src="js/design_mode/design_mode.overlay.js"></script>
+        <script src="js/design_mode/design_mode.iframe.js"></script>
+        <script src="js/design_mode/design_mode.dock.js"></script>
+        <script src="js/design_mode/design_mode.editor.js"></script>
 
-    // Toggle overlay
-    toggle: function() {
-       this.visible() ? this.hide() : this.show();
-    },
+        <script>
+            // По-умолчанию Dock задизейблен. Все кроме дока и статьи скрыто при помощи overlay.
+            // Если устанавливаем фокус в iframe, то Dock раздизейбливается
+            // 
+            // Куча разные event-колбэков
+            // У ифрейма есть прокрутка, поэтому я добавил к его высоте 70px
+            // +- Методы editor.enable(), editor.disable(), editor.toggle()
+            //
+            // Нужно подумать, как будет происходить отправка формы с аяксом и без него.
+            // Что если док нужен горизонтальный? Может сделать настройку для этого?
+            // Док должен сворачиваться
+            // Позиционирование дока относительно элемента на странице при инициализации.
+            // Если этот редактор будет встроен в форму, например в админке, где будет
+            // еще куча разные кнопок и всего такого, то нужно ли:
+            // 1. Сделать настройку, чтобы редактор понимал текстарию (это можно сделать автоматически без настройки).
+            // 2. Сделать настройку, чтобы док можно было встраивать указанный контейнер?
+            // 3. Настройки, чтобы отключать draggable и pin у дока.
+            //
+            // Если у статьи, которую редактируем при помощи DesignMode есть дополнительные возможности
+            // настроек, типа отложенного редактирования, добавления тегов и всего такого, то куда засунуть
+            // эти настройки? Во всплывающее окно? Или в док?
 
-    // Show overlay
-    show: function() {
-        this.el.setStyle('display', 'block');
-    },
+            document.addEvent('domready', function() {
+                var container = $$('#article-wrapper article')[0];
+                var toggle    = $('toggle-designmode');
+                var editor    = new DesignMode.Editor(container, {
 
-    // Hide overlay
-    hide: function() {
-        this.el.setStyle('display', 'none');
-    }
-});
+                });
+                
 
-// DesignMode namespace
-var DesignMode = new Class({});
+                toggle.addEvent('click', function(e) {
+                    e.stop();
 
-// Iframe object
-DesignMode.Iframe = new Class({
-    // Constructor
-    initialize: function(el) {
-        this.create(el)
-    },
+                    if (toggle.hasClass('enabled')) {
+                        toggle.removeClass('enabled');
+                        editor.disable();
+                        
+                    } else {
+                        toggle.addClass('enabled');
+                        editor.enable();
+                    }
+                });
 
-    // Create iframe object and inject it after el
-    create: function(el) {
-        this.iframe = new Element('iframe', {
-            id : 'editable-iframe'
-        }).inject(el, 'after');
 
-        html = '<!DOCTYPE html>'
-        html += '<head><meta charset="utf-8" /></head>'
-        html += '<body style="background: #fff">DesignMode WYSIWYG editor</body>'
-        html += '</html>'
 
-        this.win = this.iframe.contentWindow;
-        this.doc = this.iframe.contentDocument;
-        this.doc.open();
-        this.doc.write(html);
-        this.doc.close();
-    },
 
-    // Resize iframe
-    resize: function(width, height) {
-        this.iframe.setStyles({
-            'width'  : width,
-            'height' : height
-        })
-    },
 
-    // Makes iframe editable
-    editable: function(status) {
-        this.doc.designMode = status ? 'on' : 'off';
-    }
-});
-
-// Dock panel with instruments
-DesignMode.Dock = new Class({
-    Implements : [Options],
-    options    : {
-        dock        : $('editable-dock'),
-        handle      : $$('#editable-dock h4')[0],
-        default_pos : { x : 0, y : 0 }
-    },
-
-    // Constructor
-    initialize: function(options)  {
-        this.setOptions(options);
-        this.dock = $(this.options.dock);
-
-        // Set default position
-        this.dock.position({
-            position   : 'centerRight',
-            edge       : { x : 500,  y : 700 },
-            offset     : { x : -100, y : 0 }
-        });
-
-        // Set custom position
-        var p = this.options.default_pos;
-        if (p.y && p.x) {
-            this.dock.setStyles({
-                top  : p.y + 'px',
-                left : p.x + 'px'
-            });
-        }
-
-        // Pin dock to viewport
-        this.dock.pin();
-
-        // Enable grag
-        var drag = new Drag(this.dock, {
-            handle : this.options.handle,
-            snap   : 0
-        });
-    }
-});
-
-// Editor general class
-DesignMode.Editor = new Class({
-    Implements : [Events, Options],
-
-    // Constructor
-    initialize: function(textarea, options) {
-        this.textarea = $(textarea).setStyle('display', 'none');
-        this.setOptions(options);
-
-        // Creates iframe
-        this.editor = new DesignMode.Iframe(this.textarea);
-        this.editor.resize(this.textarea.getStyle('width'), this.textarea.getStyle('height'));
-        this.editor.editable(true);
-
-        // Initialize dock
-        this.dock = new DesignMode.Dock({
-            default_pos : { x : 819, y : 8 }
-        });
-
-        this.editor.doc.addEvent('focus', function() {
-            alert('ok')
-        });
-//        $('bold').addEvent('click', function() {
-//            this.setBold();
-//        }.bind(this))
-    }//,
-//
-//    setBold: function() {
-//        this.editor.contentWindow.focus();
-//        this.editor.contentWindow.document.execCommand("bold", null, "");
-//    }
-});
-
-// По-умолчанию Dock задизейблен. Если устанавливаем фокус в iframe, то Dock раздизейбливается
-// Dock не должен выезжать за пределы viewport
-// Куча разные event-колбэков
-document.addEvent('domready', function() {
-    var editor = new DesignMode.Editor($$('textarea')[0], {
-        
-    });
-
-//    var overlay = new TanrayaOverlay;
-//    overlay.show();
-//    $('editable-dock').setStyle('z-index', 9000);
-//    $('editable-iframe').setStyles({
-//        'position' : 'relative',
-//        'z-index'  : 9000
-//    });
-})
-</script>
-
+            //    var overlay = new DesignMode.Overlay;
+            //    overlay.show();
+            //    $('dm-dock').setStyle('z-index', 9000);
+            //    $('editable-iframe').setStyles({
+            //        'position' : 'relative',
+            //        'z-index'  : 9000
+            //    });
+            })
+        </script>
 
     </body>
 </html>
