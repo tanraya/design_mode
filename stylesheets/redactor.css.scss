@@ -14,7 +14,7 @@
   user-select: none;
 }
 
-div.imperavi {
+div.design-mode {
   border: 1px solid #ddd;
   font: 12px Arial;
 
@@ -23,16 +23,16 @@ div.imperavi {
     margin: 0;
   }
 
-  div.imperavi-resizer, div.imperavi-resizer div {
+  div.design-mode-resizer, div.design-mode-resizer div {
     cursor: s-resize;
     height: 8px !important;
     line-height: 0 !important;
     font-size: 0 !important;
-    background: asset-url("imperavi_rails/imperavi/bg.png", image) repeat-x !important; 
+    background: asset-url("design-mode_rails/design-mode/bg.png", image) repeat-x !important; 
 
     div {
       border-top: 1px solid #d7d6d6 !important;
-      background: asset-url("imperavi_rails/imperavi/resizer.gif", image) center no-repeat !important;
+      background: asset-url("design-mode_rails/design-mode/resizer.gif", image) center no-repeat !important;
     }
   }
 
@@ -42,7 +42,7 @@ div.imperavi {
     padding: 0;
     margin: 0;
     height: 32px;
-    //background: #d1d1d1 asset-url("imperavi_rails/imperavi/bg.png", image) repeat-x top;
+    //background: #d1d1d1 asset-url("design-mode_rails/design-mode/bg.png", image) repeat-x top;
     border-bottom: 1px solid #b2b2b2;
 
 background: #e5e5e5; /* Old browsers */
@@ -60,7 +60,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e5e5', end
 
       a {
         display: inline-block;
-        background: asset-url("imperavi_rails/imperavi/icons.png", image) no-repeat;
+        background: asset-url("design-mode_rails/design-mode/icons.png", image) no-repeat;
         outline: none;
         height: 32px;
         width: 32px;
@@ -75,12 +75,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e5e5', end
       // TODO Replace with box-shadow
       &.has-dropdown:hover {
         a span {
-          background: asset-url("imperavi_rails/imperavi/hover.png", image) repeat-x;
+          background: asset-url("design-mode_rails/design-mode/hover.png", image) repeat-x;
         }
       }
 
       & a:active span {
-        background: asset-url("imperavi_rails/imperavi/hover.png", image) repeat-x;
+        background: asset-url("design-mode_rails/design-mode/hover.png", image) repeat-x;
       }
 
       & a:hover {
@@ -170,7 +170,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e5e5', end
 
 
 
-div#imperavi-overlay {
+div#design-mode-overlay {
   position: absolute;
   margin: auto;
   top: 0;
@@ -186,9 +186,9 @@ div#imperavi-overlay {
   display: none;
 }
 
-div#imperavi-dialog {
+div#design-mode-dialog {
   font-family: "Trebuchet MS", "Helvetica Neue", "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
-  background: asset-url("imperavi_rails/imperavi/bg_modal.png", image) #dbdbda repeat-x top;
+  background: asset-url("design-mode_rails/design-mode/bg_modal.png", image) #dbdbda repeat-x top;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -202,10 +202,10 @@ div#imperavi-dialog {
   color: #000;
   display: none;
 
-  div#imperavi-dialog-container {
+  div#design-mode-dialog-container {
     position: relative;
 
-    h1#imperavi-dialog-title {
+    h1#design-mode-dialog-title {
       padding: 20px 60px 20px 20px;
       margin: 0;
       font-size: 20px;
@@ -213,7 +213,7 @@ div#imperavi-dialog {
       @include unselectable;
     }
 
-    a#imperavi-dialog-close {
+    a#design-mode-dialog-close {
       position: absolute;
       display: block;
       padding: 20px;
@@ -232,7 +232,7 @@ div#imperavi-dialog {
       }
     }
 
-    article#imperavi-dialog-content {
+    article#design-mode-dialog-content {
       padding: 0 20px;
       background: none;
 
@@ -248,12 +248,12 @@ div#imperavi-dialog {
       }
     }
 
-    div#imperavi-dialog-buttons-wrapper {
+    div#design-mode-dialog-buttons-wrapper {
       width: 100%;
       position: absolute;
       bottom: 0;
               
-      div#imperavi-dialog-buttons {
+      div#design-mode-dialog-buttons {
         overflow: hidden;
         padding: 10px 20px 13px 20px;
 
@@ -265,7 +265,7 @@ div#imperavi-dialog {
           float: left;
         }
 
-        a#imperavi-dialog-okay {
+        a#design-mode-dialog-okay {
           padding-left: 40px;
           padding-right: 40px;
         }
@@ -275,40 +275,40 @@ div#imperavi-dialog {
 }
 
 //////////////////////////////////////////////////////////////
-.imperavi-plugin-video {
+.design-mode-plugin-video {
   textarea {
     width: 553px;
     height: 164px;
   }
 }
 
-.imperavi-plugin-hyperlink {
+.design-mode-plugin-hyperlink {
   input {
     width: 410px - 6px;
   }
 
   // "Remove" button
-  div#imperavi-dialog-buttons #imperavi-dialog-remove {
+  div#design-mode-dialog-buttons #design-mode-dialog-remove {
     float: right !important;
     margin-right: 0 !important;
   }
 }
 
-.imperavi-plugin-file {
+.design-mode-plugin-file {
   input {
     width: 410px - 6px;
   }
 
   // "Remove" button
-  div#imperavi-dialog-buttons #imperavi-dialog-remove {
+  div#design-mode-dialog-buttons #design-mode-dialog-remove {
     float: right !important;
     margin-right: 0 !important;
   }
 }
 
-.imperavi-plugin-image {
+.design-mode-plugin-image {
   // "Remove" button
-  div#imperavi-dialog-buttons #imperavi-dialog-remove {
+  div#design-mode-dialog-buttons #design-mode-dialog-remove {
     float: right !important;
     margin-right: 0 !important;
   }
@@ -333,7 +333,7 @@ div#imperavi-dialog {
       }
 
       &.loading {
-        background-image: asset-url("imperavi_rails/imperavi/spinner.gif", image);
+        background-image: asset-url("design-mode_rails/design-mode/spinner.gif", image);
         background-position: 50% 50%;
         background-repeat: no-repeat;
 
@@ -346,7 +346,7 @@ div#imperavi-dialog {
   }
 }
 
-article.imperavi-tabs {
+article.design-mode-tabs {
   height: 465px;
   overflow: hidden;
   position: relative;
