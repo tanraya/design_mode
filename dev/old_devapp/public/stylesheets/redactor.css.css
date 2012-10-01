@@ -1,0 +1,64 @@
+/*
+Syntax error: File to import not found or unreadable: compass/css3/gradient.
+              Load paths:
+                Compass::SpriteImporter
+                /home/tanraya/sandbox/design_mode/dev/devapp/public/stylesheets/sass
+                /home/tanraya/sandbox/design_mode/dev/devapp/stylesheets
+                /home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/compass-0.12.2/frameworks/blueprint/stylesheets
+                /home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/compass-0.12.2/frameworks/compass/stylesheets
+        on line 3 of ./stylesheets/redactor.css.scss
+
+1: @import "compass/css3/border-radius";
+2: @import "compass/css3/box-shadow";
+3: @import "compass/css3/gradient";
+4: @import "compass/css3/inline-block";
+5: @import "./buttons";
+6: 
+7: @mixin unselectable {
+8:   -webkit-touch-callout: none;
+
+Backtrace:
+./stylesheets/redactor.css.scss:3
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/tree/import_node.rb:64:in `rescue in import'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/tree/import_node.rb:42:in `import'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/tree/import_node.rb:25:in `imported_file'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/tree/visitors/perform.rb:227:in `rescue in visit_import'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/tree/visitors/perform.rb:232:in `visit_import'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/tree/visitors/base.rb:37:in `visit'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/tree/visitors/perform.rb:98:in `visit'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/tree/visitors/base.rb:53:in `map'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/tree/visitors/perform.rb:107:in `block in visit_children'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/tree/visitors/perform.rb:119:in `with_environment'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/tree/visitors/perform.rb:106:in `visit_children'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/tree/visitors/perform.rb:126:in `visit_root'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/tree/visitors/base.rb:37:in `visit'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/tree/visitors/perform.rb:98:in `visit'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/tree/root_node.rb:20:in `render'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/engine.rb:315:in `_render'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/engine.rb:262:in `render'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/plugin/compiler.rb:340:in `update_stylesheet'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/plugin/compiler.rb:202:in `block in update_stylesheets'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/plugin/compiler.rb:200:in `each'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/plugin.rb:81:in `update_stylesheets'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/plugin.rb:54:in `check_for_updates'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/sass-3.2.1/lib/sass/plugin/rack.rb:51:in `call'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/rack-1.4.1/lib/rack/lint.rb:48:in `_call'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/rack-1.4.1/lib/rack/lint.rb:36:in `call'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/rack-1.4.1/lib/rack/showexceptions.rb:24:in `call'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/rack-1.4.1/lib/rack/commonlogger.rb:20:in `call'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/rack-1.4.1/lib/rack/chunked.rb:43:in `call'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+/home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/rack-1.4.1/lib/rack/handler/webrick.rb:59:in `service'
+/home/tanraya/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+/home/tanraya/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+/home/tanraya/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: File to import not found or unreadable: compass/css3/gradient.\A               Load paths:\A                 Compass::SpriteImporter\A                 /home/tanraya/sandbox/design_mode/dev/devapp/public/stylesheets/sass\A                 /home/tanraya/sandbox/design_mode/dev/devapp/stylesheets\A                 /home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/compass-0.12.2/frameworks/blueprint/stylesheets\A                 /home/tanraya/.rvm/gems/ruby-1.9.3-p125@global/gems/compass-0.12.2/frameworks/compass/stylesheets\A         on line 3 of ./stylesheets/redactor.css.scss\A \A 1: @import \"compass/css3/border-radius\";\A 2: @import \"compass/css3/box-shadow\";\A 3: @import \"compass/css3/gradient\";\A 4: @import \"compass/css3/inline-block\";\A 5: @import \"./buttons\";\A 6: \A 7: @mixin unselectable {\A 8:   -webkit-touch-callout: none;"; }
